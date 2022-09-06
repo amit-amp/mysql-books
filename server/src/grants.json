@@ -1,0 +1,362 @@
+[
+  {
+    "role": "superUser",
+    "resource": "User",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "default",
+    "resource": "User",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "User",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "superUser",
+    "resource": "User",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "default",
+    "resource": "User",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "User",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superUser",
+    "resource": "User",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "default",
+    "resource": "User",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "User",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superUser",
+    "resource": "User",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "default",
+    "resource": "User",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "User",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superUser",
+    "resource": "User",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "default",
+    "resource": "User",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "User",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superUser",
+    "resource": "Book",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "default",
+    "resource": "Book",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Book",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "superUser",
+    "resource": "Book",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "default",
+    "resource": "Book",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Book",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superUser",
+    "resource": "Book",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "default",
+    "resource": "Book",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Book",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superUser",
+    "resource": "Book",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "default",
+    "resource": "Book",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Book",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superUser",
+    "resource": "Book",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "default",
+    "resource": "Book",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Book",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superUser",
+    "resource": "Author",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "default",
+    "resource": "Author",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Author",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "superUser",
+    "resource": "Author",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "default",
+    "resource": "Author",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Author",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superUser",
+    "resource": "Author",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "default",
+    "resource": "Author",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Author",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superUser",
+    "resource": "Author",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "default",
+    "resource": "Author",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Author",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superUser",
+    "resource": "Author",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "default",
+    "resource": "Author",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Author",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superUser",
+    "resource": "Genre",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "default",
+    "resource": "Genre",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Genre",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "superUser",
+    "resource": "Genre",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "default",
+    "resource": "Genre",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Genre",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superUser",
+    "resource": "Genre",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "default",
+    "resource": "Genre",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Genre",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superUser",
+    "resource": "Genre",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "default",
+    "resource": "Genre",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Genre",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superUser",
+    "resource": "Genre",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "default",
+    "resource": "Genre",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Genre",
+    "action": "read:any",
+    "attributes": "*"
+  }
+]
