@@ -1,4 +1,5 @@
 import { Injectable, UnauthorizedException } from "@nestjs/common";
+import { User } from "src/user/base/User";
 // @ts-ignore
 // eslint-disable-next-line
 import { UserService } from "../user/user.service";
@@ -21,7 +22,11 @@ export class AuthService {
   ): Promise<UserInfo | null> {
     const user = await this.userService.findOne({
       where: { username },
+      include: {
+        roles: true
+      }
     });
+    
     if (user && (await this.passwordService.compare(password, user.password))) {
       const { roles } = user;
       return { username, roles };

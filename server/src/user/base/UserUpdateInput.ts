@@ -14,6 +14,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { AuthorWhereUniqueInput } from "../../author/base/AuthorWhereUniqueInput";
 import { ValidateNested, IsOptional, IsString } from "class-validator";
 import { Type } from "class-transformer";
+import { RoleUpdateManyWithoutUsersInput } from "src/role/RoletUpdateManyWithoutUsersInput";
 @InputType()
 class UserUpdateInput {
   @ApiProperty({
@@ -63,16 +64,16 @@ class UserUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: [String],
+    type: RoleUpdateManyWithoutUsersInput,
   })
   @IsString({
     each: true,
   })
   @IsOptional()
-  @Field(() => [String], {
+  @Field(() => RoleUpdateManyWithoutUsersInput, {
     nullable: true,
   })
-  roles?: Array<string>;
+  roles?: RoleUpdateManyWithoutUsersInput;
 
   @ApiProperty({
     required: false,

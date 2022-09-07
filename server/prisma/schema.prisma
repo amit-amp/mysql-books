@@ -1,6 +1,6 @@
 datasource postgres {
-  provider = "postgresql"
-  url      = env("POSTGRESQL_URL")
+  provider = "mysql"
+  url      = env("DATABASE_URL")
 }
 
 generator client {
@@ -15,9 +15,15 @@ model User {
   id        String   @id @default(cuid())
   lastName  String?
   password  String
-  roles     String[]
+  roles     Role[]
   updatedAt DateTime @updatedAt
   username  String   @unique
+}
+
+model Role {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  users     User[]
 }
 
 model Book {
