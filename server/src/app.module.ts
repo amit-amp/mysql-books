@@ -5,6 +5,7 @@ import { UserModule } from "./user/user.module";
 import { BookModule } from "./book/book.module";
 import { AuthorModule } from "./author/author.module";
 import { GenreModule } from "./genre/genre.module";
+import { RoleModule } from "./role/role.module";
 import { ACLModule } from "./auth/acl.module";
 import { AuthModule } from "./auth/auth.module";
 import { HealthModule } from "./health/health.module";
@@ -21,6 +22,7 @@ import { GraphQLModule } from "@nestjs/graphql";
     BookModule,
     AuthorModule,
     GenreModule,
+    RoleModule,
     ACLModule,
     AuthModule,
     HealthModule,

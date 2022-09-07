@@ -16,6 +16,7 @@ model User {
   lastName  String?
   password  String
   roles     String[]
+  roles2    Role[]
   updatedAt DateTime @updatedAt
   username  String   @unique
 }
@@ -43,4 +44,12 @@ model Genre {
   createdAt DateTime @default(now())
   id        String   @id @default(cuid())
   updatedAt DateTime @updatedAt
+}
+
+model Role {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  name      String   @unique
+  updatedAt DateTime @updatedAt
+  users     User[]
 }

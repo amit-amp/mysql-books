@@ -16,6 +16,7 @@ import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
+import { RoleListRelationFilter } from "../../role/base/RoleListRelationFilter";
 @InputType()
 class UserWhereInput {
   @ApiProperty({
@@ -62,6 +63,18 @@ class UserWhereInput {
     nullable: true,
   })
   lastName?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => RoleListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => RoleListRelationFilter)
+  @IsOptional()
+  @Field(() => RoleListRelationFilter, {
+    nullable: true,
+  })
+  roles2?: RoleListRelationFilter;
 
   @ApiProperty({
     required: false,
