@@ -1,4 +1,5 @@
 import { AuthorWhereUniqueInput } from "../author/AuthorWhereUniqueInput";
+import { RoleCreateNestedManyWithoutUsersInput } from "./RoleCreateNestedManyWithoutUsersInput";
 
 export type UserCreateInput = {
   author?: AuthorWhereUniqueInput | null;
@@ -6,5 +7,6 @@ export type UserCreateInput = {
   lastName?: string | null;
   password: string;
   roles: Array<string>;
+  roles2?: RoleCreateNestedManyWithoutUsersInput;
   username: string;
 };

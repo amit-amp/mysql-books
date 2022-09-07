@@ -19,33 +19,32 @@ import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
-import { CreateUserArgs } from "./CreateUserArgs";
-import { UpdateUserArgs } from "./UpdateUserArgs";
-import { DeleteUserArgs } from "./DeleteUserArgs";
-import { UserFindManyArgs } from "./UserFindManyArgs";
-import { UserFindUniqueArgs } from "./UserFindUniqueArgs";
-import { User } from "./User";
-import { RoleFindManyArgs } from "../../role/base/RoleFindManyArgs";
-import { Role } from "../../role/base/Role";
-import { Author } from "../../author/base/Author";
-import { UserService } from "../user.service";
+import { CreateRoleArgs } from "./CreateRoleArgs";
+import { UpdateRoleArgs } from "./UpdateRoleArgs";
+import { DeleteRoleArgs } from "./DeleteRoleArgs";
+import { RoleFindManyArgs } from "./RoleFindManyArgs";
+import { RoleFindUniqueArgs } from "./RoleFindUniqueArgs";
+import { Role } from "./Role";
+import { UserFindManyArgs } from "../../user/base/UserFindManyArgs";
+import { User } from "../../user/base/User";
+import { RoleService } from "../role.service";
 
-@graphql.Resolver(() => User)
+@graphql.Resolver(() => Role)
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
-export class UserResolverBase {
+export class RoleResolverBase {
   constructor(
-    protected readonly service: UserService,
+    protected readonly service: RoleService,
     protected readonly rolesBuilder: nestAccessControl.RolesBuilder
   ) {}
 
   @graphql.Query(() => MetaQueryPayload)
   @nestAccessControl.UseRoles({
-    resource: "User",
+    resource: "Role",
     action: "read",
     possession: "any",
   })
-  async _usersMeta(
-    @graphql.Args() args: UserFindManyArgs
+  async _rolesMeta(
+    @graphql.Args() args: RoleFindManyArgs
   ): Promise<MetaQueryPayload> {
     const results = await this.service.count({
       ...args,
@@ -58,24 +57,24 @@ export class UserResolverBase {
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
-  @graphql.Query(() => [User])
+  @graphql.Query(() => [Role])
   @nestAccessControl.UseRoles({
-    resource: "User",
+    resource: "Role",
     action: "read",
     possession: "any",
   })
-  async users(@graphql.Args() args: UserFindManyArgs): Promise<User[]> {
+  async roles(@graphql.Args() args: RoleFindManyArgs): Promise<Role[]> {
     return this.service.findMany(args);
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
-  @graphql.Query(() => User, { nullable: true })
+  @graphql.Query(() => Role, { nullable: true })
   @nestAccessControl.UseRoles({
-    resource: "User",
+    resource: "Role",
     action: "read",
     possession: "own",
   })
-  async user(@graphql.Args() args: UserFindUniqueArgs): Promise<User | null> {
+  async role(@graphql.Args() args: RoleFindUniqueArgs): Promise<Role | null> {
     const result = await this.service.findOne(args);
     if (result === null) {
       return null;
@@ -84,47 +83,31 @@ export class UserResolverBase {
   }
 
   @common.UseInterceptors(AclValidateRequestInterceptor)
-  @graphql.Mutation(() => User)
+  @graphql.Mutation(() => Role)
   @nestAccessControl.UseRoles({
-    resource: "User",
+    resource: "Role",
     action: "create",
     possession: "any",
   })
-  async createUser(@graphql.Args() args: CreateUserArgs): Promise<User> {
+  async createRole(@graphql.Args() args: CreateRoleArgs): Promise<Role> {
     return await this.service.create({
       ...args,
-      data: {
-        ...args.data,
-
-        author: args.data.author
-          ? {
-              connect: args.data.author,
-            }
-          : undefined,
-      },
+      data: args.data,
     });
   }
 
   @common.UseInterceptors(AclValidateRequestInterceptor)
-  @graphql.Mutation(() => User)
+  @graphql.Mutation(() => Role)
   @nestAccessControl.UseRoles({
-    resource: "User",
+    resource: "Role",
     action: "update",
     possession: "any",
   })
-  async updateUser(@graphql.Args() args: UpdateUserArgs): Promise<User | null> {
+  async updateRole(@graphql.Args() args: UpdateRoleArgs): Promise<Role | null> {
     try {
       return await this.service.update({
         ...args,
-        data: {
-          ...args.data,
-
-          author: args.data.author
-            ? {
-                connect: args.data.author,
-              }
-            : undefined,
-        },
+        data: args.data,
       });
     } catch (error) {
       if (isRecordNotFoundError(error)) {
@@ -136,13 +119,13 @@ export class UserResolverBase {
     }
   }
 
-  @graphql.Mutation(() => User)
+  @graphql.Mutation(() => Role)
   @nestAccessControl.UseRoles({
-    resource: "User",
+    resource: "Role",
     action: "delete",
     possession: "any",
   })
-  async deleteUser(@graphql.Args() args: DeleteUserArgs): Promise<User | null> {
+  async deleteRole(@graphql.Args() args: DeleteRoleArgs): Promise<Role | null> {
     try {
       return await this.service.delete(args);
     } catch (error) {
@@ -156,38 +139,22 @@ export class UserResolverBase {
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
-  @graphql.ResolveField(() => [Role])
+  @graphql.ResolveField(() => [User])
   @nestAccessControl.UseRoles({
-    resource: "Role",
+    resource: "User",
     action: "read",
     possession: "any",
   })
-  async roles2(
-    @graphql.Parent() parent: User,
-    @graphql.Args() args: RoleFindManyArgs
-  ): Promise<Role[]> {
-    const results = await this.service.findRoles2(parent.id, args);
+  async users(
+    @graphql.Parent() parent: Role,
+    @graphql.Args() args: UserFindManyArgs
+  ): Promise<User[]> {
+    const results = await this.service.findUsers(parent.id, args);
 
     if (!results) {
       return [];
     }
 
     return results;
-  }
-
-  @common.UseInterceptors(AclFilterResponseInterceptor)
-  @graphql.ResolveField(() => Author, { nullable: true })
-  @nestAccessControl.UseRoles({
-    resource: "Author",
-    action: "read",
-    possession: "any",
-  })
-  async author(@graphql.Parent() parent: User): Promise<Author | null> {
-    const result = await this.service.getAuthor(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
   }
 }

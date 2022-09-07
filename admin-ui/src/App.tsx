@@ -21,6 +21,10 @@ import { GenreList } from "./genre/GenreList";
 import { GenreCreate } from "./genre/GenreCreate";
 import { GenreEdit } from "./genre/GenreEdit";
 import { GenreShow } from "./genre/GenreShow";
+import { RoleList } from "./role/RoleList";
+import { RoleCreate } from "./role/RoleCreate";
+import { RoleEdit } from "./role/RoleEdit";
+import { RoleShow } from "./role/RoleShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -74,6 +78,13 @@ const App = (): React.ReactElement => {
           edit={GenreEdit}
           create={GenreCreate}
           show={GenreShow}
+        />
+        <Resource
+          name="Role"
+          list={RoleList}
+          edit={RoleEdit}
+          create={RoleCreate}
+          show={RoleShow}
         />
       </Admin>
     </div>
